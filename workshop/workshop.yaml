@@ -1,8 +1,13 @@
-name: AsciiDoc Sample
+name: Red Hat OpenShift Service Mesh in Action
 
 modules:
-    activate:
-    - workshop-overview
-    - setup-environment
-    - exercises/01-sample-content
-    - workshop-summary
+  activate:
+  - intro
+  - kiali
+  - routing
+  - mtls
+  - authentication
+  - acl
+  - circuit-breaking
+  - rate-limiting
+  - fault-injection

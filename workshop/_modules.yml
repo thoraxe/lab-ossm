@@ -1,0 +1,21 @@
+modules:
+  intro:
+    name: Introduction and Setup
+  kiali:
+    name: Observing the Service Mesh using Kiali
+  routing:
+    name: Routing within the Service Mesh
+  mtls:
+    name: Enabling Mutual TLS
+  authentication:
+    name: Authentication (JWT and RBAC)
+  acl:
+    name: Whitelisting/Blacklisting
+  circuit-breaking:
+    name: Retries, Timeouts and Circuit Breaking
+  rate-limiting:
+    name: Rate Limiting/Policy
+  fault-injection:
+    name: Fault Injection
+#  extra-credit:
+#    name: Extra Credit

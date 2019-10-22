@@ -1,0 +1,117 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: recommendation
+    version: v1
+  name: recommendation-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendation
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: recommendation
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/proxyCPU: "500m"
+        sidecar.istio.io/proxyMemory: 400Mi
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTIONS
+          value: -Xmx256m
+        image: quay.io/maistra_demos/recommendation:v1
+        imagePullPolicy: Always
+        name: recommendation
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: recommendation
+    version: v2
+  name: recommendation-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendation
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: recommendation
+        version: v2
+      annotations:
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/proxyCPU: "500m"
+        sidecar.istio.io/proxyMemory: 400Mi
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTIONS
+          value: -Xmx256m
+        image: quay.io/maistra_demos/recommendation:v2
+        imagePullPolicy: Always
+        name: recommendation
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: recommendation
+    version: v3
+  name: recommendation-v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendation
+      version: v3
+  template:
+    metadata:
+      labels:
+        app: recommendation
+        version: v3
+      annotations:
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/proxyCPU: "500m"
+        sidecar.istio.io/proxyMemory: 400Mi
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTIONS
+          value: -Xmx256m
+        image: quay.io/maistra_demos/recommendation:v3
+        imagePullPolicy: Always
+        name: recommendation
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendation
+  labels:
+    app: recommendation    
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: recommendation

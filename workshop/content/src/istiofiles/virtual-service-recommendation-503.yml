@@ -1,0 +1,44 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: recommendation
+spec:
+  host: recommendation
+  subsets:
+  - labels:
+      version: v1
+    name: v1
+  - labels:
+      version: v2
+    name: v2
+  - labels:
+      version: v3
+    name: v3
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: recommendation
+spec:
+  hosts:
+  - recommendation
+  http:
+  - route:
+    - destination:
+        host: recommendation
+        subset: v1
+      weight: 34
+    - destination:
+        host: recommendation
+        subset: v2
+      weight: 33
+    - destination:
+        host: recommendation
+        subset: v3
+      weight: 33
+    fault:
+      abort:
+        percentage:
+          value: 50
+        httpStatus: 503
+---

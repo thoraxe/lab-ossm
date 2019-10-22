@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: curl
+    version: v1
+  name: curl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curl
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: curl
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyCPU: "500m"
+        sidecar.istio.io/proxyMemory: 400Mi
+    spec:
+      containers:
+      - image: quay.io/maistra_demos/curl:latest
+        command: ["/bin/sleep", "3650d"]
+        imagePullPolicy: Always
+        name: curl

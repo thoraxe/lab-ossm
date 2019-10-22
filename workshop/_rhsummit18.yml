@@ -1,0 +1,23 @@
+id: "istio"
+name: "Red Hat OpenShift Service Mesh in Action"
+
+content:
+  url: https://raw.githubusercontent.com/thoraxe/istio-lab-summit-2019/master
+
+vars:
+  KUBEADMIN_PASSWORD: "default"
+  API_URL: "default"
+  MASTER_URL: "default"
+  OCP_USERNAME: "defaultocpusername"
+
+modules:
+  activate:
+  - intro
+  - kiali
+  - routing
+  - mtls
+  - authentication
+  - acl
+  - circuit-breaking
+  - rate-limiting
+  - fault-injection

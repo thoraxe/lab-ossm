@@ -1,12 +1,27 @@
 modules:
-    workshop-overview:
-        name: Workshop Overview
-        exit_sign: Setup Environment
-    setup-environment:
-        name: Setup Environment
-        exit_sign: Start Workshop
-    exercises/01-sample-content:
-        name: Sample Content
-    workshop-summary:
-        name: Workshop Summary
-        exit_sign: Finish Workshop
+    intro:
+      name: Workshop Overview
+      exit_sign: Observability with Kiali
+    kiali:
+      name: Observing the Service Mesh using Kiali
+      exit_sign: Routing
+    routing:
+      name: Routing within the Service Mesh
+      exit_sign: Mutual TLS
+    mtls:
+      name: Mutual TLS
+      exit_sign: Authentication
+    authentication:
+      name: Authentication (JWT and RBAC)
+      exit_sign: ACLs
+    acl:
+      name: Whitelisting/Blacklisting
+      exit_sign: Circuit Breaking
+    circuit-breaking:
+      name: Retries, Timeouts and Circuit Breaking
+      exit_sign: Rate Limiting
+    rate-limiting:
+      name: Rate Limiting/Policy
+      exit_sign: Fault Injection
+    fault-injection:
+      name: Fault Injection

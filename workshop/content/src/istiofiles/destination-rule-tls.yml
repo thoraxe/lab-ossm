@@ -1,0 +1,9 @@
+apiVersion: "networking.istio.io/v1alpha3"
+kind: "DestinationRule"
+metadata:
+  name: "preference-destination-rule"
+spec:
+  host: "preference"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

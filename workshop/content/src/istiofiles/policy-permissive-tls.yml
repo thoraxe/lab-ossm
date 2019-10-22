@@ -1,0 +1,10 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: "preference-mutualtls"
+spec:
+  targets:
+  - name: preference
+  peers:
+  - mtls: 
+      mode: PERMISSIVE

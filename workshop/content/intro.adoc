@@ -1,0 +1,109 @@
+## Purpose
+
+As microservices-based applications become more prevalent, both the number of
+and complexity of their interactions increases. Up until now much of the burden
+of managing these complex microservices interactions has been placed on the
+application developer, with different or non-existent support for microservice
+concepts depending on language and framework.
+
+The service mesh concept pushes this responsibility to the infrastructure, with
+features for traffic management, distributed tracing and observability, policy
+enforcement, and service/identity security, freeing the developer to focus on
+business value. In this hands-on session you will learn how to apply some of
+these features to a simple polyglot microservices application running on top of
+OpenShift using Istio, an open platform to connect, manage, and secure
+microservices.
+
+## Background
+
+Istio is an open platform to connect, manage, and secure microservices. Istio
+provides an easy way to create a network of deployed services with load
+balancing, service-to-service authentication, monitoring, and more, without
+requiring any changes in application code. OpenShift can automatically inject a
+special sidecar proxy throughout your environment to enable Istio management for
+your application. This proxy intercepts all network communication between your
+microservices microservices, and is configured and managed using Istio’s control
+plane functionality -- not your application code!
+
+Kiali is an observability console designed to provide operational insight
+into the behavior and performance of the service mesh as a whole.
+
+Jaeger is a utility for capturing distributed tracing information of requests
+as they travel throughout the mesh.
+
+Prometheus and Grafana are used to capture metrics about the performance and
+behavior of the mesh.
+
+These components combined together make up the Red Hat OpenShift Service Mesh.
+
+## Conventions
+You will see various code and command blocks throughout these exercises. Some of
+the command blocks can be executed directly while others will require modification,
+of the command before execution. If you see a command block with a red border
+(see below), the command will require slight modification.
+
+[source,none,role="copypaste copypaste-warning"]
+----
+some command to modify
+----
+
+If you hover over the command block above and left-click, it should
+automatically highlight all the text to make for easier copying.
+
+Most command blocks support executing with a click. Which terminal the
+command block executes in is pre-determined and will be indicated to you. For
+example, command blocks with looping scripts will be executed in the lower
+terminal like below:
+
+[source,bash,role="execute-2"]
+----
+for i in 1 2 3; do echo "hello $i"; done
+----
+
+For non-terminating loops, you will have to click the lower terminal and then
+press Ctrl+C to terminate the program. For example, try executing the next
+code block:
+
+[source,bash,role="execute-2"]
+----
+echo "A load generating script is running in the next step. Ctrl+C to stop"
+while :;do echo "this won't print" &> /dev/null ; done
+----
+
+For ordinary commands, we will be using the upper terminal:
+
+[source,bash,role="execute-1"]
+----
+echo "Hello World"
+----
+
+## Getting Started
+The terminals are running in a container inside the same OpenShift cluster
+where you will be using the service mesh. That container has many utilities
+pre-installed, including the `oc` CLI. The Service Mesh control plane is
+already deployed with several application components in an OpenShift
+Container Platform 4 environment.
+
+[source,bash,role="execute-1"]
+----
+oc version
+----
+
+When you logged in earlier with your credentials, this lab guide and its
+terminals became logged in as you, too:
+
+[source,bash,role="execute-1"]
+----
+oc whoami
+----
+
+You can access the OpenShift web console by clicking on word *Console* on the
+toolbar above your terminal. To come back to the terminals, just click
+*Terminal*.
+
+## Before Continuing
+While all of the exercises can stand alone and you can do them in any order,
+most of them involve looking at the Kiali observability interface and/or
+Jaeger's tracing interface. As such, please make sure to complete the
+Observability with Kiali module first before continuing to any others. We do
+not describe accessing Kiali or Jaeger anywhere else.
