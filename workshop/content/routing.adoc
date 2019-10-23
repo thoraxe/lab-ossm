@@ -101,13 +101,13 @@ spec:
   subsets:
   - labels:
       version: v1
-    name: version-v1
+    name: v1
   - labels:
       version: v2
-    name: version-v2
+    name: v2
   - labels:
       version: v3
-    name: version-v3
+    name: v3
 ----
 
 To instantiate this `DestinationRule` you can execute the following:
