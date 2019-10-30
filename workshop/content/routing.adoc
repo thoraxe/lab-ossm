@@ -196,12 +196,15 @@ going to each endpoint.
 
 == Canary Releases with the Service Mesh
 
-In the previous example we modified the default behaviour for distributing
-requests between the endpoints so we could send traffic to particular
-endpoints based on weighting. In this example we will modify the behaviour to
-be more selective, using characteristics of the individual request to
-determine which endpoint should receive the request and thereby support
-release strategies such as Canary Releases.
+A canary release involves rolling out a small deployment of new code and then
+routing specific users to it in an attempt to validate that everything is
+working as expected. In the previous example we modified the default
+behaviour for distributing requests between the endpoints so we could send
+traffic to particular endpoints based on weighting. In this example we will
+modify the behaviour to be more selective, using characteristics of the
+individual request to determine which endpoint should receive the request. In
+this way we can ensure that only a small subset of specific users reach the
+newly deployed code - a canary release.
 
 As with the last example we need a _Destination Rule_ (already created) and a
 _Virtual Service_. We will use the same Destination Rule as in the previous

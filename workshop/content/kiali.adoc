@@ -79,6 +79,9 @@ image:images/kiali-graph-2.png[Kiali Graph showing application traffic]
 
 === Kiali's View of Jaeger Distributed Tracing
 
+Jaeger is an end-to-end distributed tracing tool, providing insight into
+transactions, performance and latency, root cause analysis, and more.
+
 Kiali has the capability to expose a view of Jager Distributed Tracing. This
 involves the use of an `iframe`. As you saw when you logged into Kiali, you
 had to accept self-signed certificates and allow Kiali to use your user
