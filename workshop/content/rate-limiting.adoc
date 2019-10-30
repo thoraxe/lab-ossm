@@ -42,14 +42,14 @@ First, make sure that you have a `DestinationRule` for the `recommendation` serv
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml -n %username%-tutorial 
 ----
 
 The following YAML will limit the number of concurrent requests hitting _v2_ of the `recommendation` service:
 
 [source,bash,role="execute-1"]
 ----
-sed -e "s/USERNAME/$JUPYTERHUB_USER/" /opt/app-root/workshop/content/src/istiofiles/recommendation_rate_limit.yml | oc create -n %username%-smcp -f -
+sed -e "s/USERNAME/$JUPYTERHUB_USER/" /opt/app-root/workshop/content/src/istiofiles/recommendation_rate_limit.yml | oc apply -n %username%-smcp -f -
 ----
 
 The YAML looks like the following:

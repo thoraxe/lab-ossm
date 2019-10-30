@@ -35,7 +35,7 @@ If you had accidentally deleted the `DestinationRule`, you can recreate it with 
 
 [source,bash,role="execute-1"]
 ----
-oc create -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml -n %username%-tutorial
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml -n %username%-tutorial
 ----
 
 [#enablemtls]
@@ -80,7 +80,7 @@ Now configure preference to use mutual TLS policy.
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/authentication-enable-tls.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/authentication-enable-tls.yml -n %username%-tutorial 
 ----
 
 The Policy just created can be seen below:
@@ -100,8 +100,8 @@ spec:
 ----
 
 *Note:* It may take some time before the mesh begins to enforce the policy. If
-*you do not see the expected behaviors, wait a few more moments and then try
-*again. Patience is a virtue.
+you do not see the expected behaviors, wait a few more moments and then try
+again. Patience is a virtue.
 
 Try running the load once in the upper terminal:
 
@@ -124,7 +124,7 @@ TLS and run the curl again:
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/destination-rule-tls.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/destination-rule-tls.yml -n %username%-tutorial 
 ----
 
 The yaml just created can be seen below:
@@ -194,7 +194,7 @@ Now create a policy using permissive mode.
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/policy-permissive-tls.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/policy-permissive-tls.yml -n %username%-tutorial 
 ----
 
 The contents of the file are displayed below:

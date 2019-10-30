@@ -114,7 +114,7 @@ To instantiate this `DestinationRule` you can execute the following:
 
 [source,bash,role="execute-1"]
 ----
-oc create -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml -n %username%-tutorial
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/destination-rule.yml -n %username%-tutorial
 ----
 
 NOTE: We will be using this DestinationRule for the remainder of the examples
@@ -157,7 +157,7 @@ To deploy this configuration into the Service Mesh, execute the following comman
 
 [source,bash,role="execute-1"]
 ----
-oc create -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-80-20.yml -n %username%-tutorial
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-80-20.yml -n %username%-tutorial
 ----
 
 Switch over to the Kiali console to watch the traffic shifting from the
@@ -196,12 +196,15 @@ going to each endpoint.
 
 == Canary Releases with the Service Mesh
 
-In the previous example we modified the default behaviour for distributing
-requests between the endpoints so we could send traffic to particular
-endpoints based on weighting. In this example we will modify the behaviour to
-be more selective, using characteristics of the individual request to
-determine which endpoint should receive the request and thereby support
-release strategies such as Canary Releases.
+A canary release involves rolling out a small deployment of new code and then
+routing specific users to it in an attempt to validate that everything is
+working as expected. In the previous example we modified the default
+behaviour for distributing requests between the endpoints so we could send
+traffic to particular endpoints based on weighting. In this example we will
+modify the behaviour to be more selective, using characteristics of the
+individual request to determine which endpoint should receive the request. In
+this way we can ensure that only a small subset of specific users reach the
+newly deployed code - a canary release.
 
 As with the last example we need a _Destination Rule_ (already created) and a
 _Virtual Service_. We will use the same Destination Rule as in the previous
@@ -246,7 +249,7 @@ execute the following command:
 
 [source,bash,role="execute-1"]
 ----
-oc create -f /opt/app-root/workshop/content/src/istiofiles/routing-canary.yaml -n %username%-tutorial
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/routing-canary.yaml -n %username%-tutorial
 ----
 
 Switch back to the terminal running the load script and press ctrl+c to break out of it. Then, run a script that doesn't suppress output:
@@ -364,7 +367,7 @@ execute the following command:
 
 [source,bash,role="execute-1"]
 ----
-oc create -f /opt/app-root/workshop/content/src/istiofiles/routing-mirroring.yaml -n %username%-tutorial
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/routing-mirroring.yaml -n %username%-tutorial
 ----
 
 Look at the terminal running the load script and you will notice the

@@ -88,7 +88,7 @@ And then run the following to deploy the policy:
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/policy-jwt.yaml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/policy-jwt.yaml -n %username%-tutorial 
 ----
 
 After about 1 minute, let's run the curl again:
@@ -197,7 +197,7 @@ Run this command to deploy the RBAC:
 
 [source,bash,role="execute-1"]
 ----
-sed "s/CHANGEIT/$JUPYTERHUB_USER-tutorial/" /opt/app-root/workshop/content/src/istiofiles/authorization-enable-rbac.yml | oc create -n %username%-tutorial -f -
+sed "s/CHANGEIT/$JUPYTERHUB_USER-tutorial/" /opt/app-root/workshop/content/src/istiofiles/authorization-enable-rbac.yml | oc apply -n %username%-tutorial -f -
 ----
 
 Now RBAC is enabled on your mesh. Wait a few moments and then run the curl to
@@ -290,7 +290,7 @@ Run this command to deploy the role and role binding:
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/namespace-rbac-policy.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/namespace-rbac-policy.yml -n %username%-tutorial 
 ----
 
 Wait a few moments and then send some requests by executing the following a few times:

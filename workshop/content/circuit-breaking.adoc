@@ -148,7 +148,7 @@ information, make sure that you visit the Jaeger UI directly in order to
 accept the SSL certificate and grant permissions to Jaeger. In this lab
 guide, you can do this by clicking on "Console" to open the OpenShift web
 console, then click "Networking" -> "Routes" and make sure to select the
-`user1-smcp` project (at the top) in order to find the URL for Jaeger.
+`%username%-smcp` project (at the top) in order to find the URL for Jaeger.
 
 [#img-timeout-v1]
 .Kiali Distributed Tracing for Recommendation v1
@@ -447,5 +447,5 @@ Then delete the virtual service and the destination rule created for circuit bra
 
 [source,bash,role="execute-1"]
 ----
-oc delete -n user1-tutorial virtualservice.networking.istio.io/recommendation destinationrule.networking.istio.io/recommendation
+oc delete -n %username%-tutorial virtualservice.networking.istio.io/recommendation destinationrule.networking.istio.io/recommendation
 ----
