@@ -67,7 +67,7 @@ Go ahead and create a `DestinationRule` that will inject 503's for approximately
 
 [source,bash,role="execute-1"]
 ----
-oc -n %username%-tutorial apply -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-503.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-503.yml -n %username%-tutorial 
 ----
 
 You will see something like:
@@ -170,7 +170,7 @@ clearer if you click on the line between the two services.
 
 [source,bash,role="execute-1"]
 ----
-oc -n %username%-tutorial delete -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-503.yml
+oc delete -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-503.yml -n %username%-tutorial 
 ----
 
 You will see something like:
@@ -242,7 +242,7 @@ introduces a 7s delay for 50% of the requests.
 
 [source,bash,role="execute-1"]
 ----
-oc -n %username%-tutorial apply -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-delay.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-delay.yml -n %username%-tutorial 
 ----
 
 You will see something like:
@@ -283,7 +283,7 @@ the other 50% are in the low ms range.
 
 [source,bash,role="execute-1"]
 ----
-oc -n %username%-tutorial delete -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-delay.yml
+oc delete -f /opt/app-root/workshop/content/src/istiofiles/virtual-service-recommendation-delay.yml -n %username%-tutorial 
 ----
  
 You will see something like:

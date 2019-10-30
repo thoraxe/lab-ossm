@@ -72,7 +72,7 @@ Now create the whitelist:
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content//src/istiofiles/acl-whitelist.yml
+oc apply -f /opt/app-root/workshop/content//src/istiofiles/acl-whitelist.yml -n %username%-tutorial 
 ----
 
 The YAML you just created looks like:
@@ -166,7 +166,7 @@ Now, create the blacklist:
 
 [source,bash,role="execute-1"]
 ----
-oc create -n %username%-tutorial -f /opt/app-root/workshop/content/src/istiofiles/acl-blacklist.yml
+oc apply -f /opt/app-root/workshop/content/src/istiofiles/acl-blacklist.yml -n %username%-tutorial 
 ----
 
 The blacklist YAML looks like the following:
