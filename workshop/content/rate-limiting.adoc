@@ -25,8 +25,6 @@ gateway.networking.istio.io/customer-gateway   3h16m
 NAME                                          GATEWAYS             HOSTS   AGE
 virtualservice.networking.istio.io/customer   [customer-gateway]   [*]     3h16m
 
-NAME                                                 HOST             AGE
-destinationrule.networking.istio.io/recommendation   recommendation   36m
 ----
 
 If you have any scripts running in the bottom terminal, make sure to click
@@ -49,7 +47,7 @@ The following YAML will limit the number of concurrent requests hitting _v2_ of 
 
 [source,bash,role="execute-1"]
 ----
-sed -e "s/USERNAME/$JUPYTERHUB_USER/" /opt/app-root/workshop/content/src/istiofiles/recommendation_rate_limit.yml | oc apply -n %username%-smcp -f -
+sed -e "s/USERNAME/$JUPYTERHUB_USER/" /opt/app-root/workshop/content/src/istiofiles/recommendation_rate_limit.yml | oc apply -n %username%-tutorial -f -
 ----
 
 The YAML looks like the following:
