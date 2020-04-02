@@ -95,7 +95,7 @@ echo https://$(oc get route -n %username%-smcp jaeger -o 'jsonpath={.spec.host}'
 ----
 
 Open this URL in another browser tab, accept all certificates and, when
-promted, login with the same user and password that you used to login to
+prompted, login with the same user and password that you used to login to
 OpenShift. Once you are done, you can return to the browser tab where you
 have Kiali open.
 
