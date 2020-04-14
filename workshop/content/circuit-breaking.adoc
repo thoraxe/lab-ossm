@@ -288,15 +288,11 @@ export INGRESS_GATEWAY=$(oc get route -n %username%-smcp istio-ingressgateway -o
 for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY}; done
 ----
 
-Now go to Kiali Distributed tracing to look at the response times. Make sure
+Now go to Kiali Graph to look at the response times. Make sure
 to select "Response Time" in the 2nd dropdown box. Also, note that when
 looking at "Request Percentage" (if that's still selected) that you will not
 see the 34/33/33 percentages because you may still be capturing traffic
 weights from the previous exercise. Don't worry - it will get there.
-
-[#img-failfast]
-.Kiali Distributed Tracing for Base Fail Fast
-image:images/failfast.png[]
 
 Note all recommendation hits respond within single-digit milliseconds.
 
