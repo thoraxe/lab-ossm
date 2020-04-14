@@ -1,4 +1,5 @@
 = Circuit Breaking/Timeouts
+
 Istio provides opt-in failure recovery and fault injection features that you
 can configure dynamically at runtime. Using these features helps your
 applications operate reliably, ensuring that the service mesh can tolerate
@@ -7,7 +8,7 @@ nodes.
 
 == What we will learn in this module
 This module will provide instruction on request retries, handling of service
-timeouts, and how to apply circuit breaking. This module will also how to
+timeouts, and how to apply circuit breaking. This module will also show how to
 visualize these capabilities in Kiali.
 
 == Before Starting
