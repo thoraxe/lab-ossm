@@ -425,5 +425,5 @@ Then delete the virtual service and the destination rule created for circuit bra
 
 [source,bash,role="execute-1"]
 ----
-oc delete -n %username%-tutorial virtualservice.networking.istio.io/recommendation destinationrule.networking.istio.io/recommendation
+oc delete -n %username%-tutorial virtualservice.networking.istio.io/recommendation
 ----
