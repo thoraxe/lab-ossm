@@ -1,4 +1,5 @@
 = Rate-Limiting/Policy
+
 Istio provides policy features to enforce rate limits on traffic to a
 destination, allowing you to mitigate naughty, misbehaving or faulty
 application communication patterns transparently to either side.
