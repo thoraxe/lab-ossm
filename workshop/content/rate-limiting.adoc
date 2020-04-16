@@ -1,4 +1,5 @@
 = Rate-Limiting/Policy
+
 Istio provides policy features to enforce rate limits on traffic to a
 destination, allowing you to mitigate naughty, misbehaving or faulty
 application communication patterns transparently to either side.
@@ -122,7 +123,7 @@ spec:
     - requestcount.quota
 ----
 
-Note that the memquota resource `handler` defaines a rate limit of 4 requests
+Note that the memquota resource `handler` defines a rate limit of 4 requests
 per 5 seconds for the `recommendation` destination. Next, deploy the rate
 limiting resources.
 
