@@ -1,29 +1,29 @@
 ## Purpose
 
 As microservices-based applications become more prevalent, both the number of
-and complexity of their interactions increases. Up until now much of the burden
-of managing these complex microservices interactions has been placed on the
-application developer, with different or non-existent support for microservice
-concepts depending on language and framework.
+and complexity of their interactions increases. Up until now much of the
+burden of managing these complex microservices interactions has been placed
+on the application developer, with different or non-existent support for
+microservice concepts depending on language and framework.
 
-The service mesh concept pushes this responsibility to the infrastructure, with
-features for traffic management, distributed tracing and observability, policy
-enforcement, and service/identity security, freeing the developer to focus on
-business value. In this hands-on session you will learn how to apply some of
-these features to a simple polyglot microservices application running on top of
-OpenShift using Service Mesh, an open platform to connect, manage, and secure
-microservices.
+The service mesh concept pushes this responsibility to the infrastructure,
+with features for traffic management, distributed tracing and observability,
+policy enforcement, and service/identity security, freeing the developer to
+focus on business value. In this hands-on session you will learn how to apply
+some of these features to a simple polyglot microservices application running
+on top of OpenShift Container Platform using OpenShift Service Mesh, an open
+platform to connect, manage, and secure microservices.
 
 ## Background
 
-Service Mesh is an open platform to connect, manage, and secure microservices. Service Mesh
-provides an easy way to create a network of deployed services with load
-balancing, service-to-service authentication, monitoring, and more, without
-requiring any changes in application code. OpenShift can automatically inject
-a special sidecar proxy throughout your environment to enable Service Mesh
-management for your application. This proxy intercepts all network
-communication between your microservices, and is configured and managed using
-Service Mesh’s control plane functionality -- not your application code!
+Red Hat OpenShift Service Mesh provides an easy way to create a network of
+deployed services with load balancing, service-to-service authentication,
+monitoring, and more, without requiring any changes in application code.
+OpenShift can automatically inject a special sidecar proxy throughout your
+environment to enable Service Mesh management for your application. This
+proxy intercepts all network communication between your microservices, and is
+configured and managed using Service Mesh’s control plane functionality --
+not your application code!
 
 Kiali is an observability console designed to provide operational insight
 into the behavior and performance of the service mesh as a whole.
