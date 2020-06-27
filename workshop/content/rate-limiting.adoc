@@ -57,7 +57,6 @@ The YAML looks like the following:
 
 [source,yaml,subs="+macros,+attributes"]
 ----
----
 --- 
 apiVersion: config.istio.io/v1alpha2
 kind: handler
@@ -67,7 +66,7 @@ spec:
   compiledAdapter: memquota
   params: 
     quotas: 
-      - name: requestcount.quota.USERNAME-smcp
+      - name: requestcount.quota.%username%-smcp
         maxAmount: 500
         validDuration: 1s
         overrides: 
@@ -105,10 +104,10 @@ metadata:
 spec:
   quotaSpecs:
   - name: request-count
-    namespace: USERNAME-smcp
+    namespace: %username%-smcp
   services:
   - name: recommendation
-    namespace: USERNAME-tutorial
+    namespace: %username%-tutorial
     #  - service: '*'  # Uncomment this to bind *all* services to request-count
 ---
 apiVersion: config.istio.io/v1alpha2
