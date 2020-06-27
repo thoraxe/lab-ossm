@@ -20,7 +20,6 @@ apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
   name: requestcountquota
-  namespace: istio-system
 spec:
   compiledTemplate: quota
   params:
