@@ -1,20 +1,20 @@
----
+--- 
 apiVersion: config.istio.io/v1alpha2
 kind: handler
-metadata:
+metadata: 
   name: quotahandler
-spec:
+spec: 
   compiledAdapter: memquota
-  params:
-    quotas:
+  params: 
+    quotas: 
       - name: requestcount.quota.USERNAME-smcp
         maxAmount: 500
         validDuration: 1s
-        overrides:
-          - dimensions:
+        overrides: 
+          - dimensions: 
               destination: recommendation
-             maxAmount: 4
-             validDuration: 5s
+            maxAmount: 4
+            validDuration: 5s
 ---
 apiVersion: config.istio.io/v1alpha2
 kind: instance
