@@ -421,7 +421,7 @@ You will see something like:
 Timeout has been set to 0 seconds
 ----
 
-Then delete the virtual service and the destination rule created for circuit braking by:
+Then delete the virtual service and the destination rule created for circuit breaking by:
 
 [source,bash,role="execute-1"]
 ----
