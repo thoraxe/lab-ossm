@@ -12,7 +12,7 @@ component within the Service Mesh control plane.
 
 == Kiali
 
-link:http://kiali.io[Kiali] is a component which visualises an application's
+link:http://kiali.io[Kiali] is a component which visualizes an application's
 topology, health, metrics and tracing information to provide a deeper
 understanding of the application's behaviour and performance. Within a single
 view it is easy to determine which services are communicating with each
@@ -29,7 +29,7 @@ Every pod deployed as part of the Service Mesh contains a proxy container
 responsible for intercepting the application traffic coming into and going
 out of the pod. The Service Mesh proxy is automatically created on deployment
 of the application and automatically captures information as part of each
-service invocation. Kiali uses this information to provide a visualisation of
+service invocation. Kiali uses this information to provide a visualization of
 the Service Mesh behaviour. The information includes metrics as well as
 distributed tracing information.
 
@@ -95,7 +95,7 @@ echo https://$(oc get route -n %username%-smcp jaeger -o 'jsonpath={.spec.host}'
 ----
 
 Open this URL in another browser tab, accept all certificates and, when
-promted, login with the same user and password that you used to login to
+prompted, login with the same user and password that you used to login to
 OpenShift. Once you are done, you can return to the browser tab where you
 have Kiali open.
 
@@ -129,14 +129,14 @@ used to generate load. Press the ctrl+c keys to terminate the script.
 
 == What we learned in this module
 
-Kiali is a very useful tool for visualising the behaviour of your Service
+Kiali is a very useful tool for visualizing the behaviour of your Service
 Mesh. Through one UI you not only have a consistent view of your service
 interactions but you can see more detailed information about those
 invocations helping you to understand and identify potential issues which may
 arise.
 
 With an understanding of Kiali you should now be able to make use of its
-capabilities within the following modules to visualise the changes in
+capabilities within the following modules to visualize the changes in
 behaviour we will make through the resources within the Service Mesh
 framework. Please keep your Kiali UI open as you work through the following
 modules.

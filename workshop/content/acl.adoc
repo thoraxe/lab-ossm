@@ -80,19 +80,23 @@ The YAML you just created looks like:
 [source, yaml]
 ----
 apiVersion: "config.istio.io/v1alpha2"
-kind: listchecker
+kind: handler
 metadata:
   name: preferencewhitelist
 spec:
-  overrides: ["v1", "v3"]
-  blacklist: false
+  compiledAdapter: listchecker
+  params:
+    overrides: ["v1", "v3"]
+    blacklist: false
 ---
 apiVersion: "config.istio.io/v1alpha2"
-kind: listentry
+kind: instance
 metadata:
   name: preferencesource
 spec:
-  value: destination.labels["version"]
+  compiledTemplate: listentry
+  params:
+    value: destination.labels["version"]
 ---
 apiVersion: "config.istio.io/v1alpha2"
 kind: rule
@@ -101,9 +105,8 @@ metadata:
 spec:
   match: destination.labels["app"] == "recommendation"
   actions:
-  - handler: preferencewhitelist.listchecker
-    instances:
-    - preferencesource.listentry
+  - handler: preferencewhitelist
+    instances: [ preferencesource ]
 ----
 
 If you look at Kiali, you will notice that traffic is now making it to the v1
@@ -174,19 +177,22 @@ The blacklist YAML looks like the following:
 [source, yaml]
 ----
 apiVersion: "config.istio.io/v1alpha2"
-kind: denier
+kind: handler
 metadata:
   name: denycustomerhandler
 spec:
-  status:
-    code: 7
-    message: Not allowed
+  compiledAdapter: denier
+  params:
+    status:
+      code: 7
+      message: Not allowed
 ---
 apiVersion: "config.istio.io/v1alpha2"
-kind: checknothing
+kind: instance
 metadata:
   name: denycustomerrequests
 spec:
+  compiledTemplate: checkNothing
 ---
 apiVersion: "config.istio.io/v1alpha2"
 kind: rule
@@ -195,8 +201,8 @@ metadata:
 spec:
   match: source.labels["app"]=="preference" && destination.labels["app"] == "recommendation"  && destination.labels["version"] == "v3"
   actions:
-  - handler: denycustomerhandler.denier
-    instances: [ denycustomerrequests.checknothing ]
+  - handler: denycustomerhandler
+    instances: [ denycustomerrequests ]
 ----
 
 Eventually, if you look at Kiali, you can now see that requests to the v3 version of the

@@ -1,4 +1,5 @@
 = Circuit Breaking/Timeouts
+
 Istio provides opt-in failure recovery and fault injection features that you
 can configure dynamically at runtime. Using these features helps your
 applications operate reliably, ensuring that the service mesh can tolerate
@@ -7,7 +8,7 @@ nodes.
 
 == What we will learn in this module
 This module will provide instruction on request retries, handling of service
-timeouts, and how to apply circuit breaking. This module will also how to
+timeouts, and how to apply circuit breaking. This module will also show how to
 visualize these capabilities in Kiali.
 
 == Before Starting
@@ -254,23 +255,6 @@ This YAML creates a `DestinationRule` and a `VirtualService` to control the traf
 [source,yaml,subs="+macros,+attributes"]
 ----
 apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: recommendation
-spec:
-  host: recommendation
-  subsets:
-  - labels:
-      version: v1
-    name: v1
-  - labels:
-      version: v2
-    name: v2
-  - labels:
-      version: v3
-    name: v3
----
-apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: recommendation
@@ -304,17 +288,11 @@ export INGRESS_GATEWAY=$(oc get route -n %username%-smcp istio-ingressgateway -o
 for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY}; done
 ----
 
-Now go to Kiali Distributed tracing to look at the response times. Make sure
-to select "Response Time" in the 2nd dropdown box. Also, note that when
-looking at "Request Percentage" (if that's still selected) that you will not
-see the 34/33/33 percentages because you may still be capturing traffic
-weights from the previous exercise. Don't worry - it will get there.
+Now go to "Distributed Tracing" in Kiali and look at the response times. Note that all recommendation hits respond within single-digit milliseconds.
 
 [#img-failfast]
 .Kiali Distributed Tracing for Base Fail Fast
 image:images/failfast.png[]
-
-Note all recommendation hits respond within single-digit milliseconds.
 
 [#nocircuitbreaker]
 === Load test without circuit breaker
@@ -443,9 +421,9 @@ You will see something like:
 Timeout has been set to 0 seconds
 ----
 
-Then delete the virtual service and the destination rule created for circuit braking by:
+Then delete the virtual service and the destination rule created for circuit breaking by:
 
 [source,bash,role="execute-1"]
 ----
-oc delete -n %username%-tutorial virtualservice.networking.istio.io/recommendation destinationrule.networking.istio.io/recommendation
+oc delete -n %username%-tutorial virtualservice.networking.istio.io/recommendation
 ----
