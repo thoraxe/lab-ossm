@@ -60,37 +60,44 @@ The YAML looks like the following:
 --- 
 apiVersion: config.istio.io/v1alpha2
 kind: handler
-metadata: 
+metadata:
   name: quotahandler
-spec: 
+  namespace: %username%-smcp
+spec:
   compiledAdapter: memquota
-  params: 
-    quotas: 
-      - name: requestcount.quota.%username%-smcp
-        maxAmount: 500
-        validDuration: 1s
-        overrides: 
-          - dimensions: 
-              destination: recommendation
-            maxAmount: 4
-            validDuration: 5s
+  params:
+    quotas:
+    - name: requestcountquota.instance.%username%-smcp
+      maxAmount: 500
+      validDuration: 1s
+      # The first matching override is applied.
+      # A requestcount instance is checked against override dimensions.
+      overrides:
+      # The following override applies to 'recommendation' regardless
+      # of the source.
+      - dimensions:
+          destination: recommendation
+        maxAmount: 1
+        validDuration: 5s
 ---
 apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
   name: requestcountquota
+  namespace: %username%-smcp
 spec:
   compiledTemplate: quota
   params:
     dimensions:
       source: request.headers["x-forwarded-for"] | "unknown"
       destination: destination.labels["app"] | destination.service.name | "unknown"
-      destinationVersion: destination.labels["version"] | "unknown"    
+      destinationVersion: destination.labels["version"] | "unknown"
 ---
 apiVersion: config.istio.io/v1alpha2
 kind: QuotaSpec
 metadata:
   name: request-count
+  namespace: %username%-smcp
 spec:
   rules:
   - quotas:
@@ -101,6 +108,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: QuotaSpecBinding
 metadata:
   name: request-count
+  namespace: %username%-smcp
 spec:
   quotaSpecs:
   - name: request-count
@@ -114,6 +122,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: rule
 metadata:
   name: quota
+  namespace: %username%-smcp
 spec:
   # quota only applies if you are not logged in.
   # match: match(request.headers["cookie"], "user=*") == false

@@ -192,7 +192,7 @@ kind: instance
 metadata:
   name: denycustomerrequests
 spec:
-  compiledTemplate: checkNothing
+  compiledTemplate: checknothing
 ---
 apiVersion: "config.istio.io/v1alpha2"
 kind: rule
