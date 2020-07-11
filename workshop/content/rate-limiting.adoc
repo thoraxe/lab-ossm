@@ -62,12 +62,12 @@ apiVersion: config.istio.io/v1alpha2
 kind: handler
 metadata:
   name: quotahandler
-  namespace: USERNAME-smcp
+  namespace: %username%-smcp
 spec:
   compiledAdapter: memquota
   params:
     quotas:
-    - name: requestcountquota.instance.USERNAME-smcp
+    - name: requestcountquota.instance.%username%-smcp
       maxAmount: 500
       validDuration: 1s
       # The first matching override is applied.
@@ -84,7 +84,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
   name: requestcountquota
-  namespace: USERNAME-smcp
+  namespace: %username%-smcp
 spec:
   compiledTemplate: quota
   params:
@@ -97,7 +97,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: QuotaSpec
 metadata:
   name: request-count
-  namespace: USERNAME-smcp
+  namespace: %username%-smcp
 spec:
   rules:
   - quotas:
@@ -108,21 +108,21 @@ apiVersion: config.istio.io/v1alpha2
 kind: QuotaSpecBinding
 metadata:
   name: request-count
-  namespace: USERNAME-smcp
+  namespace: %username%-smcp
 spec:
   quotaSpecs:
   - name: request-count
-    namespace: USERNAME-smcp
+    namespace: %username%-smcp
   services:
   - name: recommendation
-    namespace: USERNAME-tutorial
+    namespace: %username%-tutorial
     #  - service: '*'  # Uncomment this to bind *all* services to request-count
 ---
 apiVersion: config.istio.io/v1alpha2
 kind: rule
 metadata:
   name: quota
-  namespace: USERNAME-smcp
+  namespace: %username%-smcp
 spec:
   # quota only applies if you are not logged in.
   # match: match(request.headers["cookie"], "user=*") == false
