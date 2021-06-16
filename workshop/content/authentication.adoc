@@ -206,7 +206,7 @@ test the RBAC:
 [source,bash,role="execute-1"]
 ----
 export INGRESS_GATEWAY=$(oc get route -n %username%-smcp istio-ingressgateway -o 'jsonpath={.spec.host}')
-for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY}; done
+for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY} --header "Authorization: Bearer $TOKEN"; done
 ----
 
 
@@ -221,7 +221,7 @@ For more specific details, execute one curl:
 [source,bash,role="execute-1"]
 ----
 export INGRESS_GATEWAY=$(oc get route -n %username%-smcp istio-ingressgateway -o 'jsonpath={.spec.host}')
-curl http://${INGRESS_GATEWAY} -sv
+curl http://${INGRESS_GATEWAY} --header "Authorization: Bearer $TOKEN" -sv
 ----
 
 Notice that you get a `403 Forbidden` HTTP response.
@@ -298,7 +298,7 @@ Wait a few moments and then send some requests by executing the following a few 
 [source,bash,role="execute-1"]
 ----
 export INGRESS_GATEWAY=$(oc get route -n %username%-smcp istio-ingressgateway -o 'jsonpath={.spec.host}')
-for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY}; done
+for x in $(seq 1 10); do curl http://${INGRESS_GATEWAY} --header "Authorization: Bearer $TOKEN"; done
 ----
 
 You will see something like:
